@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="EdVerse.Data/EdVerse.Data.csproj" />
+  <Project Path="EdVerse.Interfaces/EdVerse.Interfaces.csproj" />
+  <Project Path="EdVerse.Services/EdVerse.Services.csproj" />
+  <Project Path="EdVerse.ViewModels/EdVerse.ViewModels.csproj" />
+  <Project Path="EdVerse/EdVerse.csproj" />
+</Solution>
