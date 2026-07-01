@@ -16,4 +16,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Entity\Communication\" />
+    <Folder Include="Data\Entity\Attendance\" />
+    <Folder Include="Data\Configurations\" />
+    <Folder Include="Data\Seed\" />
+  </ItemGroup>
+
 </Project>
