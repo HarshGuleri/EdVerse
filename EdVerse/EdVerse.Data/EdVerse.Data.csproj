@@ -17,9 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Configurations\Examination\" />
+    <Folder Include="Data\Configurations\Enrollment\" />
+    <Folder Include="Data\Configurations\Faculty\" />
+    <Folder Include="Data\Configurations\People\" />
     <Folder Include="Data\Entity\Communication\" />
     <Folder Include="Data\Entity\Attendance\" />
-    <Folder Include="Data\Configurations\" />
     <Folder Include="Data\Seed\" />
   </ItemGroup>
 
