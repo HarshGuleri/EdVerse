@@ -77,7 +77,7 @@ namespace EdVerse.Data.Data
         {
             base.OnModelCreating(builder);
 
-            // Fluent API configurations yaha aayengi.
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
     }
 }

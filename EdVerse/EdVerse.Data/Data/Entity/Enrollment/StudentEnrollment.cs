@@ -44,7 +44,6 @@ namespace EdVerse.Data.Data.Entity.Enrollment
         public virtual ICollection<StudentMarks> StudentMarks { get; set; }
     = new HashSet<StudentMarks>();
 
-        public virtual ICollection<SemesterResult> SemesterResults { get; set; }
-    = new HashSet<SemesterResult>();
+        public virtual SemesterResult? SemesterResult { get; set; }
     }
 }
