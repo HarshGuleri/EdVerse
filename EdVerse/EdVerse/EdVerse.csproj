@@ -18,6 +18,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EdVerse.Data\EdVerse.Data.csproj" />
+    <ProjectReference Include="..\EdVerse.Interfaces\EdVerse.Interfaces.csproj" />
+    <ProjectReference Include="..\EdVerse.Services\EdVerse.Services.csproj" />
+    <ProjectReference Include="..\EdVerse.ViewModels\EdVerse.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

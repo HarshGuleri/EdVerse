@@ -1,8 +1,17 @@
 using EdVerse.Data;
 using EdVerse.Data.Data;
 using EdVerse.Data.Data.Identity;
+using EdVerse.Interfaces.Repositories;
+using EdVerse.Interfaces.Services.Academic;
+using EdVerse.Interfaces.UnitOfWork;
+using EdVerse.Services.Repositories;
+using EdVerse.Services.Services.Academic;
+using EdVerse.Services.UnitOfWork;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +21,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+// Repository
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+// Unit Of Work
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// Services
+builder.Services.AddScoped<ICourseService, CourseService>();
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {
@@ -31,6 +48,8 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddRazorPages();
 
 // Configure cookie settings for authentication
 builder.Services.ConfigureApplicationCookie(options =>
@@ -58,6 +77,8 @@ else
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseStaticFiles();
 
 app.UseAuthentication();
 
