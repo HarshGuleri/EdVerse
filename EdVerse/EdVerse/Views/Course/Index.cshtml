@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<EdVerse.ViewModels.Academic.Course.CourseListVm>
-
 @{
     ViewData["Title"] = "Courses";
 }
@@ -8,6 +7,19 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
 
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show">
+
+                @TempData["Success"]
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                </button>
+
+            </div>
+        }
         <h2>Course Management</h2>
 
         <a asp-action="Create"
@@ -17,6 +29,10 @@
             Create Course
 
         </a>
+
+        <button type="button" onclick="toastermessage()" >
+            Toast
+        </button>
 
     </div>
 
@@ -70,11 +86,16 @@
                                 Edit
                             </a>
 
-                            <a asp-action="Delete"
-                               asp-route-id="@item.Id"
-                               class="btn btn-danger btn-sm">
+                            <button type="button"
+                                    class="btn btn-danger btn-sm btn-delete"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#confirmModal"
+                                    data-id="@item.Id"
+                                    data-name="@item.CourseName">
+
                                 Delete
-                            </a>
+
+                            </button>
 
                         </td>
 
@@ -99,4 +120,30 @@
 
     </table>
 
+    @await Html.PartialAsync("_ConfirmActionModal")
+
 </div>
+
+
+<script>
+           document.querySelectorAll(".btn-delete").forEach(btn => {
+
+        btn.addEventListener("click", function () {
+
+            document.getElementById("deleteId").value = this.dataset.id;
+
+            document.getElementById("modalTitle").innerText = "Delete Course";
+
+            document.getElementById("modalMessage").innerText =
+                `Are you sure you want to delete '${this.dataset.name}'?`;
+
+        });
+
+    });
+
+    function toastermessage(){
+     debugger
+
+        toastr.success("Error occured while toasting");
+    }
+</script>

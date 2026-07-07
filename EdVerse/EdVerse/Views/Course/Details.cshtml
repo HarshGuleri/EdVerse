@@ -1,0 +1,72 @@
+﻿@model EdVerse.ViewModels.Academic.Course.CourseDetailsVm
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Course Details</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row mb-3">
+
+                <div class="col-md-3 fw-bold"> Course Code </div>
+
+                <div class="col-md-9"> @Model.CourseCode </div>
+
+            </div>
+
+            <div class="row mb-3">
+
+                <div class="col-md-3 fw-bold"> Course Name </div>
+
+                <div class="col-md-9"> @Model.CourseName </div>
+
+            </div>
+
+            <div class="row mb-3">
+
+                <div class="col-md-3 fw-bold"> Duration </div>
+
+                <div class="col-md-9">  @Model.DurationInYears Year(s) </div>
+
+            </div>
+
+            <div class="row mb-3">
+
+                <div class="col-md-3 fw-bold"> Total Semesters </div>
+
+                <div class="col-md-9">  @Model.TotalSemesters </div>
+
+            </div>
+
+            <div class="row mb-3">
+
+                <div class="col-md-3 fw-bold"> Description </div>
+
+                <div class="col-md-9"> @(string.IsNullOrWhiteSpace(Model.Description)
+                        ? "N/A"
+                        : Model.Description)
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"> Edit </a>
+
+            <a asp-action="Index" class="btn btn-secondary"> Back </a>
+
+        </div>
+
+    </div>
+
+</div>
